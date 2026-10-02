@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>A Little Something For You ❤️</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Georgia, serif;
+            background: #fff0f5;
+            color: #5a2737;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .page {
+            min-height: 100vh;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .page.active {
+            display: flex;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 700px;
+            margin: auto;
+        }
+
+        h1 {
+            font-size: 45px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 19px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .heart {
+            font-size: 70px;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.15);
+            }
+        }
+
+        button {
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            background: #d94f70;
+            color: white;
+            font-size: 17px;
+            cursor: pointer;
+            margin: 10px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.08);
+        }
+
+        .gift-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin: 35px 0;
+        }
+
+        .gift {
+            font-size: 70px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .gift:hover {
+            transform: translateY(-10px) rotate(5deg);
+        }
+
+        input {
+            padding: 15px;
+            border-radius: 20px;
+            border: 2px solid #e6a1b3;
+            width: 80%;
+            max-width: 350px;
+            font-size: 17px;
+            text-align: center;
+            outline: none;
+        }
+
+        .message-box {
+            background: rgba(255,255,255,0.8);
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            margin: 25px 0;
+        }
+
+        .photo {
+            width: 250px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            margin: 20px;
+        }
+
+        .reason {
+            background: white;
+            padding: 18px;
+            margin: 12px;
+            border-radius: 18px;
+            display: inline-block;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.07);
+        }
+
+        #noButton {
+            position: relative;
+        }
+
+        .floating-heart {
+            position: fixed;
+            font-size: 25px;
+            animation: floatUp 5s linear infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes floatUp {
+            from {
+                transform: translateY(100vh);
+            }
+
+            to {
+                transform: translateY(-100vh);
+            }
+        }
+
+        .letter {
+            text-align: left;
+        }
+
+        @media(max-width:600px) {
+
+            h1 {
+                font-size: 35px;
+            }
+
+            h2 {
+                font-size: 27px;
+            }
+
+            p {
+                font-size: 17px;
+            }
+
+            .gift {
+                font-size: 55px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+
+<!-- PAGE 1 -->
+
+<section id="page1" class="page active">
+
+    <div class="container">
+
+        <div class="heart">❤️</div>
+
+        <h1>Hey you...</h1>
+
+        <p>
+            I made something for you.
+        </p>
+
+        <p>
+            Don't rush through it, okay? 👀
+        </p>
+
+        <p>
+            You have a few little surprises waiting for you.
+        </p>
+
+        <div class="gift-container">
+
+            <div class="gift" onclick="openGift(1)">
+                🎁
+            </div>
+
+            <div class="gift" onclick="openGift(2)">
+                🎁
+            </div>
+
+            <div class="gift" onclick="openGift(3)">
+                🎁
+            </div>
+
+        </div>
+
+        <p id="giftMessage"></p>
+
+        <button onclick="showPage(2)">
+            Continue ❤️
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- PAGE 2 -->
+
+<section id="page2" class="page">
+
+    <div class="container">
+
+        <div class="heart">🔐</div>
+
+        <h2>
+            Okay Mr. Boyfriend...
+        </h2>
+
+        <p>
+            Before you continue,
+            prove that you're actually my person. 😌
+        </p>
+
+        <p>
+            Enter the secret password.
+        </p>
+
+        <input
+            type="text"
+            id="password"
+            placeholder="Your answer..."
+        >
+
+        <br>
+
+        <button onclick="checkPassword()">
+            UNLOCK ❤️
+        </button>
+
+        <p id="passwordMessage"></p>
+
+    </div>
+
+</section>
+
+
+
+<!-- PAGE 3 -->
+
+<section id="page3" class="page">
+
+    <div class="container">
+
+        <div class="heart">👀</div>
+
+        <h2>
+            I made something special for you...
+        </h2>
+
+        <p>
+            Do you wanna see it?
+        </p>
+
+        <button onclick="showPage(4)">
+            YES ❤️
+        </button>
+
+        <button id="noButton" onclick="moveNoButton()">
+            NO 😐
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- PAGE 4 -->
+
+<section id="page4" class="page">
+
+    <div class="container">
+
+        <div class="heart">
+            💗
+        </div>
+
+        <h1>
+            HAPPY BOYFRIEND'S DAY
+        </h1>
+
+        <p>
+            To my favourite idiot. ❤️
+        </p>
+
+        <img
+            src="images/photo3.jpg"
+            class="photo"
+            alt="My favourite person"
+        >
+
+        <p>
+            The person who somehow manages
+            to annoy me, make me laugh,
+            and make my day better
+            at the same time.
+        </p>
+
+        <button onclick="showPage(5)">
+            There's more... 🥹
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- PAGE 5 -->
+
+<section id="page5" class="page">
+
+    <div class="container">
+
+        <h2>
+            Why YOU? ❤️
+        </h2>
+
+        <p>
+            Because you're not just my boyfriend.
+        </p>
+
+        <div>
+
+            <div class="reason">
+                My most favourite person
+            </div>
+
+            <div class="reason">
+                The one who deals with my nonsence 😂
+            </div>
+
+            <div class="reason">
+                My secret keeper 🤫
+            </div>
+
+            <div class="reason">
+                The one who takes care of me always
+            </div>
+
+            <div class="reason">
+                My biggest supporter 😌
+            </div>
+
+            <div class="reason">
+                My safe place ❤️
+            </div>
+
+        </div>
+
+        <br>
+
+        <button onclick="showPage(6)">
+            Keep reading 💌
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- PAGE 6 -->
+
+<section id="page6" class="page">
+
+    <div class="container">
+
+        <h2>
+            To my favourite person...
+        </h2>
+
+        <div class="message-box letter">
+
+            <p>
+                I don't think I say it enough,
+                but I'm genuinely grateful
+                that you're in my life.
+                You make me feel so complete.
+            </p>
+
+            <p>
+                We've had our ups and downs.
+                We've laughed, annoyed each other,
+                and had moments where neither of us
+                knew what to say, and we have seen days 
+                where we were away from each other..
+            </p>
+
+            <p>
+                But somehow, you're still someone
+                I want beside me.
+            </p>
+
+            <p>
+                Thank you for being you.
+                Thank you for all the little things
+                you do, even the ones you probably
+                don't realise I notice. Thank you for everything 
+                you do for me even tho i have troubled you a lot
+                hehehehe
+            </p>
+
+            <p>
+                You aren't just my boyfriend.
+                You're someone who has become
+                a really important part of my life.
+                You are my safe plave and i will tell it 10000000 
+                times that you are the love of my life.
+            </p>
+
+            <p>
+                And no matter how much I tease you...
+                or annoy you....
+                or trouble you...
+            </p>
+
+            <p style="text-align:center;">
+                <strong>
+                    I'm really, really lucky to have you. ❤️
+                </strong>
+            </p>
+
+        </div>
+
+        <button onclick="showPage(7)">
+            One last thing... 🥺
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- PAGE 7 -->
+
+<section id="page7" class="page">
+
+    <div class="container">
+
+        <div class="heart">
+            🫶
+        </div>
+
+        <h2>
+            One last thing...
+        </h2>
+
+        <div class="message-box">
+
+            <p>
+                You don't just have a place
+                in my heart...
+            </p>
+
+            <h1>
+                You have your own little home there. ❤️
+            </h1>
+
+            <p>
+                Happy Boyfriend's Day, cutieeeeee.
+            </p>
+
+            <p>
+                I love you. 🫶
+            </p>
+
+        </div>
+
+        <p>
+            ♡ ♡ ♡ ♡ ♡
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<script>
+
+    function showPage(pageNumber) {
+
+        document.querySelectorAll(".page")
+            .forEach(page => {
+                page.classList.remove("active");
+            });
+
+        document
+            .getElementById("page" + pageNumber)
+            .classList.add("active");
+
+        window.scrollTo(0, 0);
+    }
+
+
+
+    function openGift(number) {
+
+        const message =
+            document.getElementById("giftMessage");
+
+        if (number === 1) {
+
+            message.innerHTML =
+                "🎁 Surprise #1: You are stuck with me. ❤️";
+
+        }
+
+        if (number === 2) {
+
+            message.innerHTML =
+                "🎁 Surprise #2: I really, really loveeeee you. 🥹";
+
+        }
+
+        if (number === 3) {
+
+            message.innerHTML =
+                "🎁 Surprise #3: Okay fine... you're my favourite. 😌❤️";
+
+        }
+
+    }
+
+
+
+    function checkPassword() {
+
+        const password =
+            document.getElementById("password")
+            .value
+            .toLowerCase()
+            .trim();
+
+        const message =
+            document.getElementById("passwordMessage");
+
+        const correctPassword =
+            "bear";
+
+        if (password === correctPassword) {
+
+            message.innerHTML =
+                "Correct. I knew you'd know it. ❤️";
+
+            setTimeout(function() {
+                showPage(3);
+            }, 1200);
+
+        } else {
+
+            message.innerHTML =
+                "Excuse me??? 😭 Try again.";
+
+        }
+
+    }
+
+
+
+    function moveNoButton() {
+
+        const button =
+            document.getElementById("noButton");
+
+        const x =
+            Math.random() * 250 - 125;
+
+        const y =
+            Math.random() * 200 - 100;
+
+        button.style.transform =
+            `translate(${x}px, ${y}px)`;
+
+    }
+
+
+
+    function createHeart() {
+
+        const heart =
+            document.createElement("div");
+
+        heart.className =
+            "floating-heart";
+
+        heart.innerHTML = "❤️";
+
+        heart.style.left =
+            Math.random() * 100 + "vw";
+
+        heart.style.animationDuration =
+            (3 + Math.random() * 4) + "s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(function() {
+
+            heart.remove();
+
+        }, 7000);
+
+    }
+
+
+    setInterval(createHeart, 1000);
+
+</script>
+
+</body>
+</html>
